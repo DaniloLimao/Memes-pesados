@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 15 Memes Pesados</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000; /* Cor de fundo preto */
+            color: #fff;
+            overflow: hidden; /* Impede a rolagem da página */
+        }
+
+        .imagens {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .imagens img {
+            width: calc(50% - 400px);
+            max-width: 100%;
+            height: auto;
+        }
+
+        .imagem-tela-cheia {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            background: black;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imagem-tela-cheia img {
+            max-width: 200%;
+            max-height: 200%;
+            object-fit: contain;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="imagens">
+        <img src="imagem1.jpg" alt="Imagem 1">
+        <img src="imagem2.jpg" alt="Imagem 2">
+        <img src="imagem3.jpg" alt="Imagem 3">
+        <img src="imagem4.jpg" alt="Imagem 4">
+    </div>
+
+    <div class="imagem-tela-cheia" id="imagemTelaCheia">
+        <img src="aranha.jpg" alt="Imagem em Tela Cheia">
+    </div>
+
+    <audio id="audio">
+        <source src="audio.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <script>
+        window.onload = function() {
+            var imagens = document.querySelector('.imagens');
+            var imagemTelaCheia = document.getElementById('imagemTelaCheia');
+            var audio = document.getElementById('audio');
+
+            // Após 10 segundos, esconde as imagens e exibe a imagem em tela cheia e o áudio
+            setTimeout(function() {
+                imagens.style.display = 'none';
+                imagemTelaCheia.style.display = 'flex';
+
+                // Carrega o áudio e executa quando estiver pronto
+                audio.addEventListener('loadeddata', function() {
+                    audio.play();
+                });
+
+                // Carrega o áudio explicitamente
+                audio.load();
+            }, 5000);
+        };
+    </script>
+</body>
+</html>
